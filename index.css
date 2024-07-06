@@ -1,0 +1,132 @@
+body {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+    overflow: hidden;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+}
+
+.gradient-loader {
+    border-radius: 50%;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ff6b6b);
+    background-size: 300% 300%;
+    animation: gradientSpin 3s ease infinite;
+    position: relative;
+}
+
+.gradient-loader::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+}
+
+.gradient-loader::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: 50%;
+    filter: blur(10px);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+@keyframes gradientSpin {
+    0% {
+        background-position: 0% 50%;
+        transform: rotate(0deg);
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+        transform: rotate(360deg);
+    }
+}
+
+.pulse-loader {
+    background-color: #3498db;
+    border-radius: 50%;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.8);
+        opacity: 0.7;
+    }
+}
+
+.line-loader {
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, #4a90e2, #9b59b6);
+    border-radius: 2px;
+    animation: linePulse 1.5s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.line-loader::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent);
+    animation: lineShine 1.5s linear infinite;
+}
+
+@keyframes linePulse {
+
+    0%,
+    100% {
+        transform: scaleY(1);
+    }
+
+    50% {
+        transform: scaleY(1.8);
+    }
+}
+
+@keyframes lineShine {
+    0% {
+        left: -200%;
+    }
+
+    100% {
+        left: 200%;
+    }
+}
